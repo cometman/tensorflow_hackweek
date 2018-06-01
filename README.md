@@ -105,7 +105,7 @@ Submit job to gcloud
 ```
 # From tensorflow/models/research/
 gcloud ml-engine jobs submit training object_detection_`date +%s` \
-    --runtime-version 1.2 \
+    --runtime-version 1.7 \
     --job-dir=gs://tedtestmodels/data/jobs \
     --packages dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz \
     --module-name object_detection.train \
@@ -121,6 +121,26 @@ View stats
 gcloud ml-engine jobs stream-logs object_detection_1527870848
 ```
 
+Stream ML logs
+
+https://console.cloud.google.com/logs/viewer?project=tedml-205906&authuser=1&resource=ml_job%2Fjob_id%2Fobject_detection_1527870848&minLogLevel=0&expandAll=false&advancedFilter=resource.type%3D%22ml_job%22%0A&timestamp=2018-06-01T16:56:10.533000000Z&scrollTimestamp=2018-06-01T16:55:29.526770114Z&customFacets=&limitCustomFacetWidth=true&interval=NO_LIMIT&dateRangeUnbound=forwardInTime
+
+## Exporting a trained model for TF
+
+python3 object_detection/export_inference_graph.py \
+    --input_type image_tensor \
+    --pipeline_config_path /Users/clayselby/Developer/tensorflow_hackweek/ssd_mobilenet_v1_pets.config \
+    --trained_checkpoint_prefix ssd_mobilenet_v1_coco \
+    --output_directory /Users/clayselby/Developer/tensorflow_hackweek/trained_models
+
+python3 object_detection/export_inference_graph.py \
+    --logtostderr \
+    --pipeline_config_path=/Users/clayselby/Developer/tensorflow_hackweek/ssd_mobilenet_v1_pets.config \
+    --trained_checkpoint_prefix /Users/clayselby/Downloads/ssd_mobilenet_v1_coco_11_06_2017/model.ckpt.data-00000-of-00001 \
+    --train_dir=/Users/clayselby/Developer/tensorflow_hackweek/trained_models \
+    --output_directory=/Users/clayselby/Developer/tensorflow_hackweek/trained_models
+
+
 ## Train model steps...
 - Take photos
 - Label with LabelImg
@@ -132,4 +152,5 @@ gcloud ml-engine jobs stream-logs object_detection_1527870848
 # Known issues
 - Could not get camera access in VirtualEnv
 - OpenCV 3.0.0 no longer exists on conda, so using 3.1.0 which may crash according to OP
-
+- Unknown which Runtime version to use
+- Jobs can take awhile to run.....
