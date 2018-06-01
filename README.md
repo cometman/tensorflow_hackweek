@@ -5,6 +5,10 @@ Requires Python3 to run. Install via Virtualenv
 
 https://www.tensorflow.org/get_started/eager
 
+
+The Iris classification problem
+
+
 ```bash
 # to run example iris example. 
 python2 iris.y  
@@ -32,10 +36,29 @@ If issue:
 
 solution: https://stackoverflow.com/questions/21784641/installation-issue-with-matplotlib-python
 
+### Miniconda
+Install https://conda.io/miniconda.html
+
+```
+~/miniconda3/bin/conda env create -f environment.yml
+```
+
+### OpenCV3
+brew install opencv3 --with-contirb --with-qt5
+
 ### Running 
 ```
-source ~/tensorflow_hackweek/bin/activate
-cd tensorflow/models/research/object_detection
-python ~/tensorflow_hackweek/object.py
+python3 object_detection_app.py --source=1
 ```
+
+
+### Training object detector data set
+https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9
+
+#TFRecord file format
+
+
+# Known issues
+- Could not get camera access in VirtualEnv
+- OpenCV 3.0.0 no longer exists on conda, so using 3.1.0 which may crash according to OP
 
