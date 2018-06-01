@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>t7.JPG</filename>
+	<path>/Users/clayselby/Developer/tensorflow_hackweek/images/t7.JPG</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>3024</width>
+		<height>4032</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>T</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>5</xmin>
+			<ymin>685</ymin>
+			<xmax>2686</xmax>
+			<ymax>3508</ymax>
+		</bndbox>
+	</object>
+</annotation>
